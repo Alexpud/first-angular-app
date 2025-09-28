@@ -10,6 +10,7 @@ import { type DummyUser } from './user.model';
 
 export class User {
   @Input({ required: true }) user!: DummyUser
+  @Input({ required: true}) selected!: boolean
   @Output() select = new EventEmitter<string>();
 
   onselectUser() {
