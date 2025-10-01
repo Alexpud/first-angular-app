@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Task } from './task/task';
+import { NewTask } from './new-task/new-task';
 
 @Component({
   selector: 'app-tasks',
-  imports: [Task],
+  imports: [Task, NewTask],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css'
 })
@@ -12,6 +13,7 @@ import { Task } from './task/task';
 export class Tasks {
   @Input() name: string | undefined
   @Input() userId: string | undefined
+  displayNewTask = false
   tasks = [
     {
       id: 't1',
@@ -44,5 +46,9 @@ export class Tasks {
 
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter(task => task.id != id)
+  }
+
+  onStartAddTask() {
+    this.displayNewTask = true
   }
 }
