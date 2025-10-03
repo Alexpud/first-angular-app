@@ -51,4 +51,8 @@ export class Tasks {
   onStartAddTask() {
     this.displayNewTask = true
   }
+
+  onCancelAddTask() {
+    this.displayNewTask = false
+  }
 }
