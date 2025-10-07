@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Task } from './task/task';
 import { NewTask } from './new-task/new-task';
+import { NewTaskData } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -8,7 +9,6 @@ import { NewTask } from './new-task/new-task';
   templateUrl: './tasks.html',
   styleUrl: './tasks.css'
 })
-
 
 export class Tasks {
   @Input() name: string | undefined
@@ -54,5 +54,15 @@ export class Tasks {
 
   onCancelAddTask() {
     this.displayNewTask = false
+  }
+
+  onAddNewTask(newTask: NewTaskData) {
+    this.tasks.push({
+      userId: this.userId!,
+      summary: newTask.summary,
+      title: newTask.title,
+      dueDate: newTask.dueDate,
+      id: 't' + (this.tasks.length + 1)
+    })
   }
 }
